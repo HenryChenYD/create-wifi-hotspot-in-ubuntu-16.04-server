@@ -17,9 +17,12 @@ Create wifi hotspot in ubuntu 16.04 server on the command line.
 
 安装 NetworkManager:
 
-    sudo apt-get install network-manager
-
-通过这个命令其实也会自动安装 UI 相关的一些程序包，但无所谓啦。
+```bibtex
+# 安装
+sudo apt-get install network-manager
+# 启用服务
+sudo systemctl start NetworkManager.service
+```
 
 安装完后，可以查看 NetworkManager 的配置文件
 
@@ -53,7 +56,7 @@ managed=false
 
 ```bibtex
 # 添加新的热点 Create a connection
-nmcli connection add type wifi ifname '*' con-name hotspot-name autoconnect yes ssid hotspot-ssid
+sudo nmcli connection add type wifi ifname '*' con-name hotspot-name autoconnect yes ssid hotspot-ssid
 ```
 
 autoconnect 设置为 yes 将会在服务启动后自动连接， 因为是在服务器运行，所以设置为 yes。
@@ -64,39 +67,39 @@ autoconnect 设置为 yes 将会在服务启动后自动连接， 因为是在�
 
 ```bibtex
 # 设置工作模式为 AP，并且共享互联网连接 Put it in Access Point
-nmcli connection modify hotspot-name 802-11-wireless.mode ap 802-11-wireless.band bg ipv4.method shared
+sudo nmcli connection modify hotspot-name 802-11-wireless.mode ap 802-11-wireless.band bg ipv4.method shared
 ```
 
 ```bibtex
 # 设置加密方式和密码，密码 password 自己重新定义 Set a WPA password (you should change it)
-nmcli connection modify hotspot-name 802-11-wireless-security.key-mgmt wpa-psk 802-11-wireless-security.psk password
+sudo nmcli connection modify hotspot-name 802-11-wireless-security.key-mgmt wpa-psk 802-11-wireless-security.psk password
 ```
 
 启用热点的命令：
 
 ```bibtex
 # 启用热点 Enable it (run this command each time you want to enable the access point)
-nmcli connection up hotspot-name
+sudo nmcli connection up hotspot-name
 ```
 
 如果在之前的步骤中，将 autoconnect 设置为 no，那么每次要启用热点，就是用这个命令。
 
 ## 最后一步
 
-正式启用 NetworkManager 服务
+重启 NetworkManager 服务
 
 ```bibtex
-# 启用服务
-sudo systemctl start NetworkManager.service
+# 重启服务
+systemctl restart networkManager.service
 # 设置开机启动
-sudo systemctl enable NetworkManager.service
+systemctl enable networkManager.service
 ```
 
-之所以没在安装 NetworkManager 后就启用服务，是因为我是通过 SSH 进去设置的，为了避免 NetworkManager 还没配置好就启用，可能会踢了连接。
+因为我使用的是 interfaces 配置文件管理有线网络连接，NetworkManager 管理无线网络连接，所以互联网连接可能会出现问题，这时候重启一下 networking 服务就好：
 
-最后，因为我使用的是 interfaces 配置文件管理有线网络连接，NetworkManager 管理无线网络连接，所以设置后上网出现问题，这时候重启一下 networking 服务就好：
-
-    sudo systemctl restart networking.service
+```bibtex
+systemctl restart networking.service
+```
 
 ## 题外话
 
