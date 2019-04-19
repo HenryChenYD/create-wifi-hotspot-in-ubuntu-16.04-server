@@ -102,7 +102,7 @@ sudo systemctl enable NetworkManager.service
 
 先前提到 NetworkManager 管理的网络连接配置文件保存在 /etc/NetworkManager/system-connections/ 文件夹里，所以修改配置的方式不是只有上面的命令，可以直接修改配置文件。
 
-另外，nmcli 命令配置网络连接也不是只有 nmcli connection modify 这个用法，也有其它用法如：nmcli connection edit，这个略带交互的用法更高大上些，可以自行了解下。
+另外，nmcli 配置网络连接也不是只有 nmcli connection modify 这个用法，也有其它用法如：nmcli connection edit，这个略带交互的用法更高大上些，可以自行了解下。
 
 ## 参考链接
 
