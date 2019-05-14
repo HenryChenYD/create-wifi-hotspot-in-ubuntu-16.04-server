@@ -90,9 +90,9 @@ sudo nmcli connection up hotspot-name
 
 ```bibtex
 # 重启服务
-systemctl restart networkManager.service
+systemctl restart NetworkManager.service
 # 设置开机启动
-systemctl enable networkManager.service
+systemctl enable NetworkManager.service
 ```
 
 因为我使用的是 interfaces 配置文件管理有线网络连接，NetworkManager 管理无线网络连接，所以互联网连接可能会出现问题，这时候重启一下 networking 服务就好：
