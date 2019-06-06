@@ -1,14 +1,14 @@
-----------------扫描周围可见的WiFi----------------
+##扫描周围可见的WiFi
+```bibtex
+nmcli device wifi list
+```
 
-    nmcli device wifi list
-
-
-----------------查看已有的网络连接----------------
-
+##查看已有的网络连接
+```bibtex
 nmcli connection show
+```
 
-
-----------------删除不需要的网络连接----------------
+##删除不需要的网络连接
 
 sudo nmcli connection delete LINK_NAME
 
