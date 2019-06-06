@@ -1,6 +1,6 @@
 ----------------扫描周围可见的WiFi----------------
 
-nmcli device wifi list
+    nmcli device wifi list
 
 
 ----------------查看已有的网络连接----------------
