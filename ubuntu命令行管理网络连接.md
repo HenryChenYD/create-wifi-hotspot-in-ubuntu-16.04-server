@@ -1,3 +1,5 @@
+更多nmcli设置，参考：https://developer.gnome.org/NetworkManager/stable/ref-settings.html
+
 #### 扫描周围可见的WiFi
 ```bibtex
 nmcli device wifi list
