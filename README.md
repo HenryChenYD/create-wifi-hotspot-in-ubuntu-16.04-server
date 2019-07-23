@@ -22,6 +22,8 @@ Create wifi hotspot in ubuntu 16.04 server on the command line.
 sudo apt-get install network-manager
 # 启用服务
 sudo systemctl start NetworkManager.service
+# 设置开机启动
+sudo systemctl enable NetworkManager.service
 ```
 
 安装完后，可以查看 NetworkManager 的配置文件
