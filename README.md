@@ -43,10 +43,10 @@ managed=false
 
 我们通过修改 /etc/network/interfaces 配置文件来管理网络连接，其实就是 ifupdown 在管理。
 
-当我们将 managed 设置为 false 时，NetworkManager 将会管理配置所有的有线和无线网卡，interfaces 配置文件中的设置将无效，
-当 managed 设置为 true 时，NetworkManager 只会管理没有在 interfaces 配置文件中列出的网卡。
+当我们将 managed 设置为 false 时，NetworkManager 只会管理没有在 interfaces 配置文件中列出的网卡，
+当 managed 设置为 true 时，NetworkManager 将会管理配置所有的有线和无线网卡，interfaces 配置文件中的设置将无效。
 
-#### 因为我已经在 interfaces 配置文件中设置好有线的局域网连接，不想重复配置，所以这里把 managed 修改为 true。
+#### 因为我已经在 interfaces 配置文件中设置好有线的局域网连接，不想重复配置，所以这里把 managed 修改为 false。
 
 ## 添加新的热点 Hotspot
 
